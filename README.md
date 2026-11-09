@@ -83,9 +83,7 @@ gérées uniquement par AKM12.
 
 ## Licence
 
-Licence en cours de définition. En l'absence de fichier `LICENSE`, **tous droits réservés** :
-le code peut être consulté, mais pas réutilisé ni redistribué sans autorisation.
-
----
-
-AKM12 — Advanced Knowledge & Maintenance · https://akm12.com
+Code consultable, tous droits réservés — voir [LICENSE](LICENSE). Vous pouvez lire, cloner et compiler ce code
+pour votre propre usage ; sa redistribution, sa modification publiée et sa réutilisation demandent l'accord
+d'AKM12. Les versions officielles gratuites sont publiées sur https://akm12.com et
+https://github.com/akm12-dev/releases.
