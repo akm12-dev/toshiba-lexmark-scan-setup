@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+build/
+!docs/build/
+dist/
+*.spec
+.venv/
+# Ne jamais versionner une configuration contenant des mots de passe
+config.json
+*.log
+.DS_Store
+Thumbs.db

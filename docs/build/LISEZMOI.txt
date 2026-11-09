@@ -1,0 +1,26 @@
+﻿FABRICATION DU GUIDE PDF ET TESTS — Toshiba & Lexmark Scan Setup
+=====================================================================
+=====================================================================
+Régénérer le guide :
+  powershell -ExecutionPolicy Bypass -File build_guide.ps1
+  (option -SkipShots pour réutiliser les captures existantes du dossier shots\)
+=====================================================================
+Prérequis : Python (lanceur « py ») + reportlab et pypdf :
+  py -m pip install --no-deps "reportlab==4.4.4" pypdf
+  NE PAS installer Pillow : Smart App Control le bloque et casse reportlab.
+  make_pdf.py neutralise l'import de PIL ; seules des images JPEG sont utilisées.
+=====================================================================
+Fichiers :
+  build_guide.ps1   enchaîne toutes les étapes
+  shots.py          ouvre l'interface avec une config de démo temporaire et capture chaque onglet
+  make_pdf.py       contenu et mise en page du guide (texte, tableaux, schémas, sommaire)
+  render.ps1        rend chaque page du PDF en PNG (API PDF de Windows) pour vérification visuelle
+  shots\            captures utilisées dans le guide
+  test_relay.py     test de bout en bout du relais SMTP (aucune config réelle modifiée)
+  check_scripts.py  génère les scripts PowerShell/bash du partage SMB pour vérif de syntaxe :
+                      py check_scripts.py <dossier_sortie>
+                    puis vérifier les .ps1 (Parser PowerShell) et les .sh (bash -n)
+=====================================================================
+Le sommaire de make_pdf.py contient des numéros de page saisis à la main :
+les vérifier après toute modification du contenu.
+

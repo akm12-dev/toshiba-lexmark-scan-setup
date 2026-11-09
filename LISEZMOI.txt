@@ -1,0 +1,41 @@
+TOSHIBA & LEXMARK SCAN SETUP 1.0 — Scan vers dossier & Scan vers e-mail
+pour multifonctions Toshiba e-STUDIO (TopAccess) et Lexmark (Embedded Web Server)
+==================================================================================
+
+Le guide complet est dans : docs/Guide_Toshiba_Lexmark_Scan_Setup.pdf
+
+DÉMARRAGE RAPIDE
+  Windows : double-cliquez sur Lancer_Windows.bat
+  macOS   : clic droit sur Lancer_Mac.command > Ouvrir
+            (si « permission refusée » : dans le Terminal, tapez
+             chmod +x Lancer_Mac.command   puis relancez)
+
+PRÉREQUIS
+  Python 3.9 ou plus récent (https://www.python.org/downloads/). Aucune autre dépendance.
+
+MODE SERVICE (relais SMTP sans interface)
+  python ToshibaLexmarkScanSetup.py --relay
+
+CRÉER UN EXÉCUTABLE AUTONOME (facultatif)
+  Windows : build_windows.bat   -> dist\ToshibaLexmarkScanSetup.exe
+  macOS   : bash build_mac.sh   -> dist/ToshibaLexmarkScanSetup.app
+
+COHABITATION AVEC « CANON SCAN SETUP »
+  Les deux logiciels ont des configurations séparées et peuvent être installés sur le même PC.
+  Ils peuvent partager le même dossier SCANS et le même compte « scanner ».
+  En revanche, UN SEUL relais SMTP peut écouter sur le port 25 : si les deux relais doivent
+  tourner en même temps, donnez à l'un d'eux un autre port (ex. 2525).
+
+FICHIERS
+  ToshibaLexmarkScanSetup.py   point d'entrée
+  tlscan/gui.py                interface graphique
+  tlscan/sharing.py            création du partage SMB (Windows / macOS)
+  tlscan/smtp_relay.py         relais SMTP local
+  tlscan/mailer.py             envoi vers le fournisseur, pièces jointes, file d'attente
+  tlscan/autostart.py          démarrage automatique, pare-feu
+  tlscan/printer_summary.py    fiche des réglages TopAccess / EWS
+
+CONFIGURATION ET JOURNAL
+  Windows : %APPDATA%\ToshibaLexmarkScanSetup\
+  macOS   : ~/Library/Application Support/ToshibaLexmarkScanSetup/
+  (config.json contient vos mots de passe : ne le partagez pas)
