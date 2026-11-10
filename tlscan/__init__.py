@@ -3,7 +3,7 @@ pour multifonctions Toshiba e-STUDIO et Lexmark."""
 
 APP_NAME = "Toshiba & Lexmark Scan Setup"
 APP_ID = "ToshibaLexmarkScanSetup"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 BRANDS = {
     "toshiba": "Toshiba e-STUDIO",

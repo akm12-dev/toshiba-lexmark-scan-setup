@@ -48,6 +48,7 @@ class App(tk.Tk):
         logging.getLogger("tlscan").addHandler(h)
 
         self.title(f"{APP_NAME} {VERSION}")
+        self._set_icon()
         self.geometry("960x860")
         self.minsize(820, 620)
         self._style()
@@ -55,6 +56,19 @@ class App(tk.Tk):
         self._build()
         self.after(200, self._poll_log)
         self.protocol("WM_DELETE_WINDOW", self._on_close)
+
+    def _set_icon(self):
+        """Icône de la fenêtre et de la barre des tâches (fichiers assets/, inclus dans l'exe)."""
+        import os
+        base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        assets = os.path.join(base, "assets")
+        try:
+            if IS_WINDOWS:
+                self.iconbitmap(default=os.path.join(assets, "icon.ico"))
+            self._icon_img = tk.PhotoImage(file=os.path.join(assets, "icon-256.png"))
+            self.iconphoto(True, self._icon_img)
+        except (tk.TclError, OSError):
+            pass
 
     # ------------------------------------------------------------------ style
     def _style(self):
