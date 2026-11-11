@@ -12,6 +12,10 @@ Fiche officielle et téléchargements : https://akm12.com/logiciels/toshiba-lexm
   avec file d'attente en cas d'échec.
 - Préréglages : Gmail, Outlook, Microsoft 365, OVH, IONOS, Infomaniak, Orange, Free, SFR, Yahoo, iCloud.
 - Choix de la marque et fiche des réglages TopAccess ou Embedded Web Server à copier ou exporter.
+- Toshiba : accès au dossier FILE_SHARE du copieur (`\\IP-du-copieur\FILE_SHARE`), test d'accès et procédure
+  TopAccess quand Windows demande un nom d'utilisateur et un mot de passe.
+- Interface avec navigation par étapes : Accueil, Scan vers dossier, Scan vers e-mail, Réglages imprimante,
+  Dossier FILE_SHARE (Toshiba) et Journal.
 - Cohabitation avec Canon Scan Setup : configurations séparées ; un seul relais peut écouter sur le port 25 (utiliser 2525 pour l'autre).
 - Journal des opérations et démarrage automatique du relais.
 

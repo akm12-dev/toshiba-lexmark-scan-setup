@@ -177,7 +177,7 @@ def on_cover(c, doc):
     c.drawString(2.2 * cm, h - 6.0 * cm, "Scan vers dossier et Scan vers e-mail")
     c.drawString(2.2 * cm, h - 6.75 * cm, "pour multifonctions Toshiba e-STUDIO et Lexmark — PC Windows et Mac")
     c.setFont("UI", 10); c.setFillColor(colors.HexColor("#D6EEF7"))
-    c.drawString(2.2 * cm, h - 9.6 * cm, "Version 1.0  •  Novembre 2026")
+    c.drawString(2.2 * cm, h - 9.6 * cm, "Version 1.1  •  Novembre 2026")
     c.setFillColor(MUTED); c.setFont("UI", 8.5)
     c.drawString(2.2 * cm, 1.8 * cm, "Toshiba et e-STUDIO sont des marques de Toshiba Tec Corporation ; "
                                      "Lexmark est une marque de Lexmark International, Inc.")
@@ -217,12 +217,13 @@ add(Spacer(1, 6))
 toc = [["Section", "Contenu", "Page"],
        ["1", "Principe et prérequis", "2"],
        ["2", "Installation (Windows et Mac)", "4"],
-       ["3", "Premier lancement — onglet Accueil", "6"],
+       ["3", "Premier lancement — page Accueil", "6"],
        ["4", "Scan vers dossier (SMB)", "7"],
        ["5", "Scan vers e-mail (SMTP direct ou relais)", "10"],
        ["6", "Réglages à saisir sur l'imprimante", "15"],
-       ["7", "Dépannage", "17"],
-       ["8", "Sécurité, maintenance et désinstallation", "19"]]
+       ["7", "Toshiba : dossier FILE_SHARE du copieur", "16"],
+       ["8", "Dépannage", "17"],
+       ["9", "Sécurité, maintenance et désinstallation", "19"]]
 add(table(toc, [2 * cm, W - 4 * cm, 2 * cm]))
 add(PageBreak())
 
@@ -320,10 +321,12 @@ add(box("Déjà équipé de Canon Scan Setup ?",
 add(PageBreak())
 
 # ------------------------------------------------------------------ 3. Accueil
-add(P("SECTION 3", "kicker")); add(P("Premier lancement — onglet Accueil", "h1"))
-add(P("L'onglet Accueil affiche le nom et l'adresse IP de l'ordinateur. <b>Notez cette adresse IP</b> : "
-      "c'est elle que l'imprimante utilisera pour joindre l'ordinateur."))
-add(shot("1_accueil.jpg", "Figure 1 — Onglet Accueil"))
+add(P("SECTION 3", "kicker")); add(P("Premier lancement — page Accueil", "h1"))
+add(P("La barre de gauche donne accès, dans l'ordre, à chaque étape de la configuration ; le bouton "
+      "<b>Enregistrer</b> en bas à droite sauvegarde les réglages. La page Accueil affiche le nom et l'adresse IP "
+      "de l'ordinateur. <b>Notez cette adresse IP</b> : c'est elle que l'imprimante utilisera pour joindre "
+      "l'ordinateur."))
+add(shot("1_accueil.jpg", "Figure 1 — Page Accueil"))
 for s in steps([
     "Choisissez la <b>marque</b> (Toshiba e-STUDIO ou Lexmark) : la fiche de réglages s'adapte aux menus "
     "de l'imprimante.",
@@ -344,7 +347,7 @@ add(PageBreak())
 # ------------------------------------------------------------------ 4. Scan vers dossier
 add(P("SECTION 4", "kicker")); add(P("Scan vers dossier (SMB)", "h1"))
 add(P("4.1 Créer le partage dans le logiciel", "h2"))
-add(shot("2_dossier.jpg", "Figure 2 — Onglet Scan vers dossier", width=13.5 * cm))
+add(shot("2_dossier.jpg", "Figure 2 — Page Scan vers dossier", width=13.5 * cm))
 for s in steps([
     "<b>Dossier de réception</b> : là où arriveront les fichiers. Par défaut <font name='Mono'>C:\\Scans</font> "
     "(Windows) ou <font name='Mono'>/Users/Shared/Scans</font> (Mac). Le dossier est créé s'il n'existe pas.",
@@ -383,7 +386,7 @@ add(box("Comptes Microsoft et code PIN",
         "provoque des refus. Le compte dédié créé par le logiciel évite ce problème."))
 add(P("4.2 Déclarer le dossier sur l'imprimante", "h2"))
 add(P("Ouvrez l'interface Web de l'imprimante (bouton <b>Ouvrir l'interface Web</b> du logiciel) et connectez-vous "
-      "en administrateur. Les valeurs exactes à saisir figurent dans l'onglet <b>Réglages imprimante</b> du "
+      "en administrateur. Les valeurs exactes à saisir figurent dans la page <b>Réglages imprimante</b> du "
       "logiciel. Les intitulés des menus varient selon le modèle et la version du micrologiciel."))
 add(P("Toshiba e-STUDIO (TopAccess)", "h3"))
 for s in steps([
@@ -417,7 +420,7 @@ add(table([["Champ", "Toshiba (TopAccess)", "Lexmark (EWS)"],
 add(Spacer(1, 6))
 add(box("L'imprimante refuse l'identifiant ?",
         ["Essayez la forme <font name='Mono'>NOMDUPC\\scanner</font> dans le champ Nom d'utilisateur "
-         "(le nom du PC figure dans l'onglet Accueil), ou indiquez le nom du PC comme domaine (Lexmark).",
+         "(le nom du PC figure dans la page Accueil), ou indiquez le nom du PC comme domaine (Lexmark).",
          "Vérifiez que le chemin commence bien par deux antislashs.",
          "Toshiba : dans TopAccess > Administration > Configuration > Réseau > <b>SMB</b>, vérifiez que les versions "
          "SMB 2/3 sont autorisées et le réglage de signature SMB du client (si ces options existent sur votre modèle)."]))
@@ -438,7 +441,7 @@ add(table([["", "Direct", "Relais via ce PC"],
 add(Spacer(1, 4))
 add(P("En cas de doute, choisissez <b>Relais via ce PC</b>."))
 add(P("5.2 Configurer le compte de messagerie", "h2"))
-add(shot("3_email.jpg", "Figure 3 — Onglet Scan vers e-mail, compte de messagerie", width=13.5 * cm))
+add(shot("3_email.jpg", "Figure 3 — Page Scan vers e-mail, compte de messagerie", width=13.5 * cm))
 for s in steps([
     "Choisissez votre <b>Fournisseur</b> : le serveur, le port et la sécurité se remplissent "
     "automatiquement. Une remarque propre au fournisseur s'affiche sous les champs.",
@@ -482,7 +485,7 @@ for s in steps([
     add(s)
 add(CondPageBreak(14 * cm))
 add(P("5.4 Démarrer le relais local", "h2"))
-add(shot("6_relais.jpg", "Figure 4 — Section Relais SMTP local (bas de l'onglet Scan vers e-mail)", width=13.5 * cm))
+add(shot("6_relais.jpg", "Figure 4 — Section Relais SMTP local (bas de la page Scan vers e-mail)", width=13.5 * cm))
 add(table([["Réglage", "Explication"],
            ["Port d'écoute", "25 par défaut : c'est le port standard. Toshiba et Lexmark permettent de changer le port SMTP : "
                              "2525 évite tout conflit avec un autre relais."],
@@ -506,7 +509,7 @@ for s in steps([
     "Windows : cliquez sur <b>Autoriser dans le pare-feu</b> (droits administrateur demandés) pour que "
     "l'imprimante puisse joindre le port.",
     "Cliquez sur <b>Tester le relais</b> : un message de test passe par le relais exactement comme le "
-    "ferait l'imprimante. Consultez l'onglet <b>Journal</b> pour suivre son parcours."]):
+    "ferait l'imprimante. Consultez la page <b>Journal</b> pour suivre son parcours."]):
     add(s)
 add(P("5.5 Démarrage automatique", "h2"))
 add(P("Cochez <b>Lancer le relais automatiquement à l'ouverture de session</b>. Le relais tourne alors en "
@@ -560,19 +563,50 @@ add(PageBreak())
 
 # ------------------------------------------------------------------ 6. Fiche imprimante
 add(P("SECTION 6", "kicker")); add(P("Réglages à saisir sur l'imprimante", "h1"))
-add(P("L'onglet <b>Réglages imprimante</b> rassemble, à partir de vos choix, toutes les valeurs à recopier : "
+add(P("La page <b>Réglages imprimante</b> rassemble, à partir de vos choix, toutes les valeurs à recopier : "
       "destination réseau SMB, serveur SMTP, mode choisi, et où lire les erreurs. Les menus et intitulés "
-      "s'adaptent à la marque choisie dans l'onglet Accueil."))
+      "s'adaptent à la marque choisie dans la page Accueil."))
 add(shot("4_imprimante.jpg", "Figure 5 — Fiche générée pour un Toshiba e-STUDIO (menus TopAccess)", width=12.5 * cm))
 add(shot("7_lexmark.jpg", "Figure 6 — La même fiche pour un Lexmark (menus de l'Embedded Web Server)", width=12.5 * cm))
 add(P("<b>Copier</b> place la fiche dans le presse-papiers ; <b>Exporter (.txt)</b> l'enregistre pour la "
       "transmettre au technicien. La fiche contient les mots de passe en clair : conservez-la en lieu sûr."))
 add(PageBreak())
 
-# ------------------------------------------------------------------ 7. Dépannage
-add(P("SECTION 7", "kicker")); add(P("Dépannage", "h1"))
+# ------------------------------------------------------------------ 7. FILE_SHARE (Toshiba)
+add(P("SECTION 7", "kicker")); add(P("Toshiba : dossier FILE_SHARE du copieur", "h1"))
+add(P("Un e-STUDIO peut aussi enregistrer les numérisations dans son propre stockage interne (« Enregistrer en "
+      "tant que fichier » vers le stockage local). Ces fichiers se récupèrent depuis l'ordinateur dans le dossier "
+      "partagé <b>FILE_SHARE</b> du copieur, à l'adresse <font name='Mono'>\\\\IP-du-copieur\\FILE_SHARE</font>. "
+      "La page <b>Dossier FILE_SHARE</b> du logiciel (visible quand la marque Toshiba est choisie) regroupe la "
+      "procédure et les outils de vérification."))
+add(shot("8_fileshare.jpg", "Figure 8 — Page Dossier FILE_SHARE", width=10.5 * cm))
+add(P("Le problème", "h2"))
+add(P("En tapant <font name='Mono'>\\\\IP-du-copieur</font> ou <font name='Mono'>\\\\IP-du-copieur\\FILE_SHARE</font> "
+      "dans l'Explorateur Windows, une fenêtre demande un nom d'utilisateur et un mot de passe, et le dossier "
+      "ne s'ouvre pas."))
+add(P("La solution, constatée en intervention", "h2"))
+for s_ in steps([
+    "Ouvrez TopAccess avec le compte administrateur, puis <b>Administration</b> > <b>Configuration</b> > "
+    "<b>Réseau</b> > <b>SMB</b>.",
+    "Saisissez un <b>nom d'utilisateur</b> et un <b>mot de passe</b>, puis enregistrez.",
+    "<b>Désactivez</b> ensuite cette authentification, puis enregistrez à nouveau.",
+    "Rouvrez <font name='Mono'>\\\\IP-du-copieur\\FILE_SHARE</font> : le dossier s'ouvre sans demander "
+    "d'identifiants."]):
+    add(s_)
+add(P("Vérifier depuis le logiciel", "h2"))
+add(P("<b>Tester l'accès</b> tente d'ouvrir le dossier sans identifiants et explique le résultat : accès réussi, "
+      "identifiants demandés par le copieur (appliquez la solution ci-dessus), accès invité refusé par Windows, "
+      "serveur SMB du copieur inactif ou partage absent. <b>Ouvrir FILE_SHARE</b> ouvre le dossier dans "
+      "l'Explorateur. La même procédure figure en section 4 de la fiche <b>Réglages imprimante</b>."))
+add(box("Si la fenêtre d'identifiants persiste",
+        "Saisissez dans Windows le nom d'utilisateur et le mot de passe définis à l'étape 2. Les intitulés des "
+        "menus TopAccess varient selon le modèle et la version du micrologiciel."))
+add(PageBreak())
+
+# ------------------------------------------------------------------ 8. Dépannage
+add(P("SECTION 8", "kicker")); add(P("Dépannage", "h1"))
 add(P("Le journal", "h2"))
-add(P("L'onglet <b>Journal</b> affiche en direct chaque connexion de l'imprimante, chaque scan reçu, "
+add(P("La page <b>Journal</b> affiche en direct chaque connexion de l'imprimante, chaque scan reçu, "
       "chaque fichier enregistré et chaque e-mail transmis. Le fichier journal complet est accessible par "
       "le bouton <b>Ouvrir le fichier journal</b>."))
 add(shot("5_journal.jpg", "Figure 7 — Journal : réception d'un scan relayé et enregistré", width=12 * cm))
@@ -587,7 +621,7 @@ add(P("Scan vers dossier", "h2"))
 add(table([["Symptôme", "Cause probable", "Solution"],
            ["Connexion impossible / délai dépassé", "Pare-feu, réseau en profil Public, PC en veille "
             "ou IP du PC changée.", "Recréer le partage avec les options pare-feu et profil Privé ; vérifier "
-            "l'IP dans l'onglet Accueil ; désactiver la mise en veille."],
+            "l'IP dans la page Accueil ; désactiver la mise en veille."],
            ["Échec sous Windows 11 24H2 alors que tout est correct", "Signature SMB exigée, non gérée "
             "par l'imprimante.", "Cocher « Ne pas exiger la signature SMB », recréer le partage. Mettre à "
             "jour le micrologiciel de l'imprimante."],
@@ -598,6 +632,8 @@ add(table([["Symptôme", "Cause probable", "Solution"],
            ["Toshiba : échec malgré des identifiants corrects", "Version SMB ou signature côté imprimante.",
             "TopAccess > Administration > Configuration > Réseau > SMB : autoriser SMB 2/3 ; mettre à jour le "
             "micrologiciel."],
+           ["Toshiba : \\\\IP\\FILE_SHARE demande un identifiant", "Authentification SMB du copieur.",
+            "Voir section 7 (TopAccess > Réseau > SMB)."],
            ["Très ancien modèle, aucune connexion", "L'imprimante ne gère que SMB1.", "Préférer l'astuce 5.6 "
             "(scan par e-mail vers dossier). En dernier recours, option SMB1 (Windows uniquement)."],
            ["Mac : connexion refusée", "« Partage Windows » non activé pour le compte.", "Recréer le partage ; "
@@ -630,7 +666,7 @@ add(P("Les intitulés des messages d'erreur varient selon le modèle et la langu
 add(PageBreak())
 
 # ------------------------------------------------------------------ 8. Sécurité
-add(P("SECTION 8", "kicker")); add(P("Sécurité, maintenance et désinstallation", "h1"))
+add(P("SECTION 9", "kicker")); add(P("Sécurité, maintenance et désinstallation", "h1"))
 add(P("Sécurité", "h2"))
 for t in [
     "Le compte dédié n'a accès qu'au dossier des scans. Il ne peut pas ouvrir de session (masqué sous "
@@ -656,15 +692,15 @@ add(table([["Situation", "Action"],
                                                           "modifier le destinataire sur l'imprimante."],
            ["Mot de passe d'application révoqué", "En créer un nouveau, le saisir, « Tester l'envoi »."],
            ["Messages en file d'attente", "Ils sont renvoyés automatiquement ; bouton « Renvoyer la file "
-                                          "d'attente » dans l'onglet Journal pour forcer l'envoi."],
+                                          "d'attente » dans la page Journal pour forcer l'envoi."],
            ["Mode service (avancé)", "Le relais peut être lancé sans interface : "
                                      "<font name='Mono'>python ToshibaLexmarkScanSetup.py --relay</font>"]],
           [5 * cm, W - 5 * cm]))
 add(P("Désinstallation", "h2"))
 for s in steps([
-    "Onglet Scan vers dossier : <b>Supprimer le partage</b>, puis confirmez la suppression du compte "
+    "Page Scan vers dossier : <b>Supprimer le partage</b>, puis confirmez la suppression du compte "
     "dédié si vous le souhaitez. Les fichiers déjà numérisés sont conservés.",
-    "Onglet Scan vers e-mail : décochez le démarrage automatique et arrêtez le relais.",
+    "Page Scan vers e-mail : décochez le démarrage automatique et arrêtez le relais.",
     "Windows : supprimez la règle de pare-feu « Toshiba Lexmark Scan Relay SMTP » (Pare-feu Windows Defender > "
     "Paramètres avancés > Règles de trafic entrant), si elle a été créée.",
     "Supprimez le dossier ToshibaLexmarkScanSetup et le dossier de configuration indiqué ci-dessus.",

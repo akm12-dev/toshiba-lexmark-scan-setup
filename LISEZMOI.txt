@@ -1,4 +1,4 @@
-TOSHIBA & LEXMARK SCAN SETUP 1.0 — Scan vers dossier & Scan vers e-mail
+TOSHIBA & LEXMARK SCAN SETUP 1.1 — Scan vers dossier & Scan vers e-mail
 pour multifonctions Toshiba e-STUDIO (TopAccess) et Lexmark (Embedded Web Server)
 ==================================================================================
 
